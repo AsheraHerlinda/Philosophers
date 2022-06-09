@@ -34,14 +34,10 @@ int	error_msg(char *errmsg, int errnum)
 
 void	free_data(t_data *data, char *errmsg, int errnum)
 {
-	if (data->path != NULL)
-		free(data->path);
-	if (data->c_path != NULL)
-		free(data->c_path);
-	if (data->cmd != NULL)
-		free_arr(data->cmd);
-	if (data->paths)
-		free_arr(data->paths);
+	if (data->philos != NULL)
+		free_arr(data->philos);
+	if (data->m_forks != NULL)
+		free(data->m_forks);
 	free(data);
 	error_msg(errmsg, errnum);
 }
