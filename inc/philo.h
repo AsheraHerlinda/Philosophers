@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 # include <errno.h>
 # include <pthread.h>
 # include <sys/time.h>
@@ -45,7 +46,7 @@ typedef struct s_data
 	mutex			m_printf;
 	long long int	t_begin;
 	pthread_t		checker;
-}	t_data;
+}	t_data; 
 
 int		error_msg(char *errmsg, int errnum);
 void	free_data(t_data *data, char *errmsg, int errnum);

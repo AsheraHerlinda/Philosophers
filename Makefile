@@ -1,7 +1,8 @@
 NAME = 			philo
 NAME_bonus = 	philo_bonus
 
-SRCS =			man/end_programm.c \
+SRCS =			man/philo.c \
+				man/end_programm.c \
 
 SRCS_bonus =	bonus/end_programm.c \
 
@@ -13,18 +14,13 @@ CC 		=		gcc
 RM 		=		rm -f
 FLAGS 	=		-Wall -Wextra -Werror
 HEAD	=		./inc/philo.h \
-				./inc/philo_bonus.h
-INC		=		-I ./libft
-LIB		=		-L ./libft -lft
-LFT		=		./libft/libft.a
+				./inc/philo_bonus.h \
 
-all:	${LFT} ${NAME}
+
+all:	${NAME}
 
 ${NAME}: ${OBJS}
-		${CC} -o ${NAME} $^ ${LIB}
-
-${LFT}: 
-		make -s -C libft
+		${CC} -o ${NAME} $^
 
 bonus:	${LFT} ${NAME_bonus}
 
@@ -32,15 +28,13 @@ ${NAME_bonus}:	${OBJS_bonus}
 				${CC} -o ${NAME_bonus} $^ ${LIB}
 
 %.o:	%.c ${HEAD} Makefile
-		${CC} ${FLAGS} ${INC} -c $< -o $@
+		${CC} ${FLAGS} -c $< -o $@
 
 clean:
-		@make -s $@ -C libft
 		${RM} ${OBJS} ${OBJS_bonus}
 
 
 fclean: clean
-		@make -s $@ -C libft
 		${RM} ${NAME} ${NAME_bonus}
 
 re: fclean all
