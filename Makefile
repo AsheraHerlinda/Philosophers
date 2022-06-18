@@ -2,6 +2,7 @@ NAME = 			philo
 NAME_bonus = 	philo_bonus
 
 SRCS =			man/philo.c \
+				man/data_init.c \
 				man/end_programm.c \
 
 SRCS_bonus =	bonus/end_programm.c \

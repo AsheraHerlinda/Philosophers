@@ -12,7 +12,7 @@
 
 #include "../inc/philo.h"
 
-static void	free_arr(t_philo **arr);
+// static void	free_arr(t_philo **arr);
 static void	ft_putendl_fd(char *s, int fd);
 static void	ft_putstr_fd(char *s, int fd);
 
@@ -37,25 +37,29 @@ int	error_msg(char *errmsg, int errnum)
 void	free_data(t_data *data, char *errmsg, int errnum)
 {
 	if (data->philos != NULL)
-		free_arr(data->philos);
+		free(data->philos);
 	if (data->m_forks != NULL)
 		free(data->m_forks);
+	// if (data->philos != NULL)
+	// 	free_arr(data->philos);
+	// if (data->m_forks != NULL)
+	// 	free(data->m_forks);
 	free(data);
 	error_msg(errmsg, errnum);
 }
 
-static void	free_arr(t_philo **arr)
-{
-	int	i;
+// static void	free_arr(t_philo **arr)
+// {
+// 	int	i;
 
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
+// 	i = 0;
+// 	while (arr[i])
+// 	{
+// 		free(arr[i]);
+// 		i++;
+// 	}
+// 	free(arr);
+// }
 
 static void	ft_putendl_fd(char *s, int fd)
 {

@@ -30,7 +30,7 @@ typedef struct s_philo
 	long long int	t_last_eat;
 	mutex			*left_fork;
 	mutex			*right_fork;
-	pthread_t		philo_pth;		
+	pthread_t		philo_pth;
 }	t_philo;
 
 typedef struct s_data
@@ -41,14 +41,18 @@ typedef struct s_data
 	int				t_eat;
 	int				t_sleep;
 	int				must_eat;
-	t_philo			**philos;
+	t_philo			*philos;
 	mutex			*m_forks;
 	mutex			m_printf;
 	long long int	t_begin;
 	pthread_t		checker;
 }	t_data; 
 
-int		error_msg(char *errmsg, int errnum);
-void	free_data(t_data *data, char *errmsg, int errnum);
+int			data_init(t_data *data, int argc, char **argv);
+int 		simulation(t_data *data);
+
+long long   get_time(void);
+int			error_msg(char *errmsg, int errnum);
+void		free_data(t_data *data, char *errmsg, int errnum);
 
 #endif
