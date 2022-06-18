@@ -36,8 +36,9 @@ int	main(int argc, char **argv)
 
 void	checker(t_data *data)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	printf("%d\n", data->n_phils);
 	printf("%d\n", data->n_forks);
 	printf("%d\n", data->t_die);

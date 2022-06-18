@@ -17,34 +17,29 @@ int	data_init(t_data *data, int argc, char **argv)
 	data->philos = NULL;
 	data->m_forks = NULL;
 	if (data->n_phils == -1 || data->n_phils > 200 || data->t_die == -1 || \
-		data->t_eat== -1 || data->t_sleep == -1 || data->must_eat == -1)
+		data->t_eat == -1 || data->t_sleep == -1 || data->must_eat == -1)
 		return (error_msg("invalid args", 0));
-	// data->m_printf = NULL;
 	data->t_begin = 0;
 	data->checker = NULL;
-    if (mutex_init(data) == -1 || philos_init(data) == -1)
-        return (-1);
+	if (mutex_init(data) == -1 || philos_init(data) == -1)
+		return (-1);
 	return (0);
 }
 
 static int	ft_atoi(const char *s)
 {
-	int         i;
+	int			i;
 	int			max;
-	long int    res;
+	long int	res;
 
 	i = 0;
 	max = 2147483647;
 	res = 0;
 	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\r' || \
-			s[i] == '\f' || s[i] == '\v' || s[i] == ' ')
+			s[i] == '\f' || s[i] == '\v' || s[i] == ' ' || s[i] == '+')
 		i++;
-	while (s[i] == '+' || s[i] == '-')
-	{
-		if (s[i] == '-')
-			return (-1);
-		i++;
-	}
+	if (s[i] == '-')
+		return (-1);
 	while (48 <= s[i] && s[i] <= 57)
 	{
 		res = (res * 10) + (s[i] - '0');
@@ -63,7 +58,7 @@ static int	mutex_init(t_data *data)
 
 	if (pthread_mutex_init(&data->m_printf, NULL))
 		return (error_msg("mutex_printf_init_error", errno));
-	data->m_forks = (mutex *)malloc(sizeof(mutex) * data->n_forks);
+	data->m_forks = (t_mutex *)malloc(sizeof(t_mutex) * data->n_forks);
 	if (!data->m_forks)
 		return (error_msg("mutex_forks_malloc_error", errno));
 	i = 0;
@@ -97,7 +92,7 @@ static int	philos_init(t_data *data)
 		else
 		{
 			data->philos[i].left_fork = &data->m_forks[i - 1];
-			data->philos[i].right_fork = &data->m_forks[i];		
+			data->philos[i].right_fork = &data->m_forks[i];
 		}
 		i++;
 	}

@@ -29,9 +29,9 @@ int	error_msg(char *errmsg, int errnum)
 	if (errmsg != 0 || errnum != 0)
 	{
 		ft_putendl_fd("", 2);
-		return(-1);
+		return (-1);
 	}
-	return(0);
+	return (0);
 }
 
 void	free_data(t_data *data, char *errmsg, int errnum)
