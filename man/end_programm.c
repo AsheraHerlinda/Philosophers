@@ -6,7 +6,7 @@
 /*   By: asherlin <asherlin@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 04:00:00 by asherlin          #+#    #+#             */
-/*   Updated: 2022/05/28 14:20:39 by asherlin         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:56:29 by asherlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,22 @@ int	error_msg(char *errmsg, int errnum)
 	return (0);
 }
 
-void	free_data(t_data *data, char *errmsg, int errnum)
+void	free_all(t_data *data, t_philo **philos)
 {
-	if (data->philos != NULL)
-		free(data->philos);
-	if (data->m_forks != NULL)
-		free(data->m_forks);
-	// if (data->philos != NULL)
-	// 	free_arr(data->philos);
-	// if (data->m_forks != NULL)
-	// 	free(data->m_forks);
+	(void) philos;
+	// int	i;
+
+	// i = 0;
+	// while (i < data->n_phils)
+	// {
+	// 	free(philos[i]);
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < data->n_phils)
+	// 	free(data->m_forks[i++]);
+	// free(philos);
 	free(data);
-	error_msg(errmsg, errnum);
 }
 
 // static void	free_arr(t_philo **arr)

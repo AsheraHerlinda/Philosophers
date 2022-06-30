@@ -3,6 +3,8 @@ NAME_bonus = 	philo_bonus
 
 SRCS =			man/philo.c \
 				man/data_init.c \
+				man/simulation.c \
+				man/time.c \
 				man/end_programm.c \
 
 SRCS_bonus =	bonus/end_programm.c \
@@ -21,7 +23,7 @@ HEAD	=		./inc/philo.h \
 all:	${NAME}
 
 ${NAME}: ${OBJS}
-		${CC} -o ${NAME} $^
+		${CC} -o ${NAME} -pthread $^
 
 bonus:	${LFT} ${NAME_bonus}
 
